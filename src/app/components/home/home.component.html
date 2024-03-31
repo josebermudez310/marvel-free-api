@@ -1,0 +1,13 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-2 pointer">
+    <div class="col" *ngFor="let personaje of personajes" >
+      <div class="card">
+        <img [src]="personaje.thumbnail.path | crearImg:personaje.thumbnail.extension  "class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ personaje.name }}</h5>
+          <button (click)="verPersonaje(personaje.id)" type="button" class="btn btn-outline-primary btn-block">
+            ver mas..
+          </button>
+        </div>
+      </div>
+    </div>
+</div>

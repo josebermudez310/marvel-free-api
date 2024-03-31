@@ -1,0 +1,49 @@
+<div *ngIf="load" class="row row-cols-1 row-cols-md-3 g-4 mt-2 pointer">
+    <div class="col">
+      <div class="card">
+        <img [src]="personaje.thumbnail.path | crearImg:personaje.thumbnail.extension  "class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ personaje.name }}</h5>
+          <button (click)="regresar()" type="button" class="btn btn-outline-danger btn-block">
+            Regresar
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+        <p> {{ personaje.description }} </p>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col">
+        <button (click)="mostrarInfo('co')" type="button" class="btn btn-outline-primary">
+            Comics
+        </button>
+    </div>
+    <div class="col">
+        <button (click)="mostrarInfo('se')" type="button" class="btn btn-outline-primary">
+            Series
+        </button>
+    </div>
+</div>
+
+<table class="table mb-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Item</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of info; let i=index" class="mt-2 mb-2">
+        <th scope="row"> {{i+1}} </th>
+        <td> {{item.name}} </td>
+        <button (click)="verMas(item.resourceURI,id)" type="button" class="btn btn-outline-success ">
+            Ver más ...
+        </button>
+        
+      </tr>
+    </tbody>
+</table>
