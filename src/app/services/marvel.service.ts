@@ -24,7 +24,7 @@ export class MarvelService {
 
   getInfo(url:string)
   {
-    let url1=url+'?apikey=e10449344c3ed4d23dbc39c2bf657aa8&hash=ac9cd13f55ac10371645a0126b7f009c&ts=abcdefghijk';
+    let url1=url+'?apikey=e10449344c3ed4d23dbc39c2bf657aa8&hash=ac9cd13f55ac10371645a0126b7f009c&ts=abcdefghijk'.replace('http','https');
     return this.http.get(`${url1}`).pipe(map((data:any)=>data.data.results[0]));
   }
 }
