@@ -1,20 +1,21 @@
-<div *ngIf="load" class="row row-cols-1 row-cols-md-3 g-4 mt-2 pointer">
-    <div class="col">
+<div *ngIf="load" class="row row-cols-1 row-cols-md-3 g-4 mt-2 pointer justify-content-center">
+  <div class="col">
       <div class="card">
-        <img [src]="info.thumbnail.path | crearImg:info.thumbnail.extension  "class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ info.title }}</h5>
-          <button (click)="regresar()" type="button" class="btn btn-outline-danger btn-block">
-            Regresar
-          </button>
-          
-           <a [href]="info.urls[0].url" target="_blank" class="btn btn-outline-success ms-3">
-            Ver en marvel
-           </a>
-        </div>
+          <img [src]="info.thumbnail.path | crearImg:info.thumbnail.extension" class="card-img-top" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">{{ info.title }}</h5>
+              <div class="d-flex justify-content-between mt-3">
+                  <button (click)="regresar()" type="button" class="btn btn-outline-danger">
+                      <i class="fa-solid fa-arrow-left"></i> Regresar
+                  </button>
+                  <a [href]="info.urls[0].url" target="_blank" class="btn btn-outline-success">
+                      Ver en Marvel <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+              </div>
+          </div>
       </div>
-    </div>
-    <div class="col">
-        <p> {{ info.description }} </p>
-    </div>
+  </div>
+  <div class="col d-flex align-items-center">
+      <p>{{ info.description }}</p>
+  </div>
 </div>
