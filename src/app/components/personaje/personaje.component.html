@@ -1,49 +1,57 @@
+<!-- Contenido Principal -->
 <div *ngIf="load" class="row row-cols-1 row-cols-md-3 g-4 mt-2 pointer">
-    <div class="col">
-      <div class="card">
-        <img [src]="personaje.thumbnail.path | crearImg:personaje.thumbnail.extension  "class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{ personaje.name }}</h5>
-          <button (click)="regresar()" type="button" class="btn btn-outline-danger btn-block">
-            Regresar
-          </button>
-        </div>
+  <div class="col">
+      <div class="card shadow-sm">
+          <img [src]="personaje.thumbnail.path | crearImg:personaje.thumbnail.extension" class="card-img-top" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">{{ personaje.name }}</h5>
+              <div class="d-flex justify-content-between mt-3">
+                  <button (click)="regresar()" type="button" class="btn btn-outline-danger">
+                      <i class="fa-solid fa-arrow-left"></i> Regresar
+                  </button>
+              </div>
+          </div>
       </div>
-    </div>
-    <div class="col">
-        <p> {{ personaje.description }} </p>
-    </div>
+  </div>
+  <div class="col d-flex align-items-center">
+      <p>{{ personaje.description }}</p>
+  </div>
 </div>
 
+<!-- Botones de Opciones -->
 <div class="row mt-3">
-    <div class="col">
-        <button (click)="mostrarInfo('co')" type="button" class="btn btn-outline-primary">
-            Comics
-        </button>
-    </div>
-    <div class="col">
-        <button (click)="mostrarInfo('se')" type="button" class="btn btn-outline-primary">
-            Series
-        </button>
-    </div>
+  <div class="col d-flex justify-content-center">
+      <button (click)="mostrarInfo('co')" type="button" class="btn btn-outline-primary me-2">
+          <i class="fa-solid fa-book"></i> Comics
+      </button>
+      <button (click)="mostrarInfo('se')" type="button" class="btn btn-outline-primary">
+          <i class="fa-solid fa-tv"></i> Series
+      </button>
+  </div>
 </div>
 
-<table class="table mb-5">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Item</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of info; let i=index" class="mt-2 mb-2">
-        <th scope="row"> {{i+1}} </th>
-        <td> {{item.name}} </td>
-        <button (click)="verMas(item.resourceURI,id)" type="button" class="btn btn-outline-success ">
-            Ver más ...
-        </button>
-        
-      </tr>
-    </tbody>
-</table>
+<!-- Tabla de Información -->
+<div class="table-responsive mt-4 mx-3">
+  <table class="table table-striped table-hover shadow-sm rounded">
+      <thead class="table-dark">
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Item</th>
+              <th scope="col">Acción</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of info; let i = index" class="align-middle">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ item.name }}</td>
+              <td>{{ item.resourceURI }}</td>
+              <td>
+                  <button (click)="verMas(item.resourceURI, id)" type="button" class="btn btn-outline-success">
+                      <i class="fa-solid fa-eye"></i> Ver más
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
