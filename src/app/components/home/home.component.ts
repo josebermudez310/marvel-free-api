@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MarvelService } from '../../services/marvel.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +16,24 @@ export class HomeComponent implements OnInit {
     private marvelS: MarvelService,
     private router: Router
   ) { 
+    Swal.fire({
+      allowOutsideClick: false,
+      text: 'Obteniendo personajes',
+      icon: 'info'
+    });
+    Swal.showLoading();
+    
     this.marvelS.getPersonajes().subscribe((data:any) => {
-      this.personajes=data;
+      Swal.fire({
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        icon: 'success',
+        title: "Personajes obtenidos",
+        timer: 1000,
+        iconColor: '#25b06a'
+      }).then(() => {
+        this.personajes=data;
+      });
     });
   }
 
