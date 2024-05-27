@@ -1,0 +1,43 @@
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 250px;
+  background: linear-gradient(to bottom, #cccccc, #8b0000 50%, #00008b);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebar .navbar-brand {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #000000;
+}
+
+.sidebar .navbar-brand img {
+  max-height: 30px;
+  margin-right: 10px;
+}
+
+.sidebar .nav-link {
+  color: #000000;
+  padding: 10px 20px;
+}
+
+.sidebar .nav-link.active {
+  background-color: transparent;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
